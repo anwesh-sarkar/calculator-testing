@@ -1,0 +1,3 @@
+class calculatorPageModel {
+  constructor() {}
+}

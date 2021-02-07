@@ -21,6 +21,6 @@
     ]
   },
   "scripts": {
-    "test": "jest --testTimeout=1000"
+    "test": "jest --testTimeout=10000"
   }
 }
