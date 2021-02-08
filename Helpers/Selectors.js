@@ -3,6 +3,7 @@ const digitSelector = (num) => {
   return button;
 };
 const operationSelector = (operand) => {
+  console.log(operand);
   const operations = [
     { name: "EQ", value: "=" },
     { name: "PLUS", value: "+" },

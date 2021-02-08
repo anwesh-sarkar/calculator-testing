@@ -1,6 +1,6 @@
 const { defineFeature, loadFeature } = require("jest-cucumber");
 const request = require("supertest");
-const feature = loadFeature("../features/calc-addition.feature", {
+const feature = loadFeature("../features/calc-multiplication.feature", {
   loadRelativePath: true,
 });
 
@@ -10,7 +10,6 @@ const {
   operationSelector,
   outputSelector,
 } = require("../Helpers/Selectors");
-const { convertInputToArray } = require("../Helpers/FunctionHelpers");
 const Calculator = require("../calculator");
 
 defineFeature(feature, (test) => {
@@ -23,7 +22,7 @@ defineFeature(feature, (test) => {
 
   const calc = new Calculator();
 
-  test("Add two numbers", async ({ given, and, when, then }) => {
+  test("Multiply two numbers", async ({ given, and, when, then }) => {
     given(/^the user clicks on the number (\d+)$/, async (number) => {
       const arrayOfDigits = Array.from(String(number), Number);
 
