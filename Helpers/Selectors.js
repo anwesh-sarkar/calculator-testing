@@ -1,9 +1,11 @@
+//find the selector of the digit
 const digitSelector = (num) => {
   const button = `\[value="${num}"]`;
   return button;
 };
+
+//find the selector of the operand
 const operationSelector = (operand) => {
-  console.log(operand);
   const operations = [
     { name: "EQ", value: "=" },
     { name: "PLUS", value: "+" },
@@ -16,11 +18,11 @@ const operationSelector = (operand) => {
       return op.value;
     }
   });
-
   const button = `\[value="${selectorVal.value}"]`;
   return button;
 };
 
+//find the selector of the output div
 const outputSelector = "#output";
 
 module.exports = {

@@ -24,34 +24,46 @@ defineFeature(feature, (test) => {
 
   test("Subtract two numbers", async ({ given, and, when, then }) => {
     given(/^the user clicks on the number (\d+)$/, async (number) => {
+      //convert the number into array of digits to handle multiple digits click
       const arrayOfDigits = Array.from(String(number), Number);
 
+      //find selector for every digit
       for (i = 0; i < arrayOfDigits.length; i++) {
         const digitButton = digitSelector(arrayOfDigits[i]);
 
+        //click on the digit
         const btnText = await page.$eval(digitButton, (el) => {
           el.click();
           return el.textContent;
         });
+
+        //compare input to text of button
         expect(arrayOfDigits[i]).toEqual(Number(btnText));
       }
 
+      //pass the input to Calculator object
       calc.num1 = number;
     });
 
     and(/^clicks the "(.*)" button$/, async (operand) => {
+      //find selector for operand
       const operandSelector = operationSelector(operand);
 
+      //click on the operand
       const operandText = await page.$eval(operandSelector, (el) => {
         el.click();
         return el.textContent;
       });
 
-      calc.operation = operand;
+      //compare input to text of button
       expect(operand).toEqual(operandText);
+
+      //pass the input to Calculator object
+      calc.operation = operand;
     });
 
     when(/^the user clicks on the number (\d+)$/, async (number) => {
+      //convert the number into array of digits to handle multiple digits click
       const arrayOfDigits = Array.from(String(number), Number);
 
       for (i = 0; i < arrayOfDigits.length; i++) {
@@ -79,6 +91,7 @@ defineFeature(feature, (test) => {
     then(/^the result should be "(.*)"$/, async (number) => {
       const output = await page.$eval(outputSelector, (el) => el.textContent);
 
+      //Compare the output to expected output in feature file and calculation in Calculator class
       expect(output).toEqual(number);
       expect(Number(output)).toEqual(calc.Result);
     });

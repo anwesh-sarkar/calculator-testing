@@ -24,6 +24,7 @@ defineFeature(feature, (test) => {
 
   test("Multiply two numbers", async ({ given, and, when, then }) => {
     given(/^the user clicks on the number (\d+)$/, async (number) => {
+      //convert the number into array of digits to handle multiple digits click
       const arrayOfDigits = Array.from(String(number), Number);
 
       for (i = 0; i < arrayOfDigits.length; i++) {
@@ -52,6 +53,7 @@ defineFeature(feature, (test) => {
     });
 
     when(/^the user clicks on the number (\d+)$/, async (number) => {
+      //convert the number into array of digits to handle multiple digits click
       const arrayOfDigits = Array.from(String(number), Number);
 
       for (i = 0; i < arrayOfDigits.length; i++) {
@@ -79,6 +81,7 @@ defineFeature(feature, (test) => {
     then(/^the result should be "(.*)"$/, async (number) => {
       const output = await page.$eval(outputSelector, (el) => el.textContent);
 
+      //Compare the output to expected output in feature file and calculation in Calculator class
       expect(output).toEqual(number);
       expect(Number(output)).toEqual(calc.Result);
     });

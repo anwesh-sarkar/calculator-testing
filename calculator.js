@@ -1,3 +1,5 @@
+//class to perform basic arithmetic operations
+
 class Calculator {
   constructor(operation, num1, num2, result, ...remaining) {
     this.operation = operation;
@@ -23,12 +25,10 @@ class Calculator {
         return (this.result = Number(this.num1) + Number(this.num2));
       case "MINUS":
         return (this.result = Number(this.num1) - Number(this.num2));
-
       case "MULT":
         return (this.result = Number(this.num1) * Number(this.num2));
       case "DIV":
         return (this.result = Number(this.num1) / Number(this.num2));
-
       case "SQUARE":
         return (this.result = Number(this.num1) ** Number(this.num2));
       default:
