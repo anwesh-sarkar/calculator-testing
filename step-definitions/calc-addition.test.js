@@ -76,7 +76,7 @@ defineFeature(feature, (test) => {
       expect(operand).toEqual(operandText);
     });
 
-    then(/^the result should be (\d+)$/, async (number) => {
+    then(/^the result should be "(.*)"$/, async (number) => {
       const output = await page.$eval(outputSelector, (el) => el.textContent);
       console.log(calc.Result);
       expect(output).toEqual(number);

@@ -17,28 +17,18 @@ class Calculator {
     }
   }
 
-  add() {
-    return (this.result = Number(this.num1) + Number(this.num2));
-  }
-
   calculate() {
-    console.log("inside function");
-
     switch (this.operation) {
       case "PLUS":
         return (this.result = Number(this.num1) + Number(this.num2));
       case "MINUS":
-        if (this.num1 > this.num2) {
-          return (this.result = Number(this.num1) - Number(this.num2));
-        } else {
-          return (this.result = "ERR");
-        }
+        return (this.result = Number(this.num1) - Number(this.num2));
+
       case "MULT":
         return (this.result = Number(this.num1) * Number(this.num2));
       case "DIV":
-        return (this.result =
-          Number(this.num1) / Number(this.num2) +
-          (Number(this.num1) % Number(this.num2)));
+        return (this.result = Number(this.num1) / Number(this.num2));
+
       case "SQUARE":
         return (this.result = Number(this.num1) ** Number(this.num2));
       default:
