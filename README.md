@@ -9,7 +9,9 @@
 ```
   npm test
 ```
+  
 OR
+
 ```
   yarn test
 ```
