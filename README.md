@@ -5,7 +5,7 @@
 <p>Most companies follow a BDD approach and, hence, I decided to use Cucumber as well. Writing out tests in Gherkin make it easy for any user to understand.</p>
 <p>The framework has only been setup for basic single operations of Addition, Subtraction, Multiplication and Division. The next step would be set it up to deal with multiple arithmetic operations.</p>
 
-<p> The application that was tested <a>http://jsbin.com/hudape/1/</a></p>
+<p> The application that was tested http://jsbin.com/hudape/1/</p>
 
 <p>To run the test, please do:
   
