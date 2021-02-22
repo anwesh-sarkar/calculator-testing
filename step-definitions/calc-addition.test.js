@@ -6,7 +6,7 @@ const feature = loadFeature("../features/calc-addition.feature", {
 
 const {
   homepage,
-  digitSelector,
+  allDigitSelectors,
   operationSelector,
   outputSelector,
 } = require("../Helpers/Selectors");
@@ -24,24 +24,9 @@ defineFeature(feature, (test) => {
   const calc = new Calculator();
 
   test("Add two numbers", async ({ given, and, when, then }) => {
-    given(/^the user clicks on the number (\d+)$/, async (number) => {
-      //convert the number into array of digits to handle multiple digits click
-      const arrayOfDigits = Array.from(String(number), Number);
-
-      //find selector for every digit
-      for (i = 0; i < arrayOfDigits.length; i++) {
-        const digitButton = digitSelector(arrayOfDigits[i]);
-
-        //click on the digit
-        const btnText = await page.$eval(digitButton, (el) => {
-          el.click();
-          return el.textContent;
-        });
-
-        //compare input to text of button
-        expect(arrayOfDigits[i]).toEqual(Number(btnText));
-      }
-
+    given(/^the user clicks on the number (\d+)$/, (number) => {
+      //call the function to find all digit selectors and click on the buttons
+      allDigitSelectors(number);
       //pass the input to Calculator object
       calc.num1 = number;
     });
@@ -64,18 +49,9 @@ defineFeature(feature, (test) => {
     });
 
     when(/^the user clicks on the number (\d+)$/, async (number) => {
-      //convert the number into array of digits to handle multiple digits click
-      const arrayOfDigits = Array.from(String(number), Number);
-
-      for (i = 0; i < arrayOfDigits.length; i++) {
-        const digitButton = digitSelector(arrayOfDigits[i]);
-
-        const btnText = await page.$eval(digitButton, (el) => {
-          el.click();
-          return el.textContent;
-        });
-        expect(arrayOfDigits[i]).toEqual(Number(btnText));
-      }
+      //call the function to find all digit selectors and click on the buttons
+      allDigitSelectors(number);
+      //pass the input to Calculator object
       calc.num2 = number;
     });
 

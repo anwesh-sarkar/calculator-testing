@@ -1,12 +1,22 @@
 //class to perform basic arithmetic operations
 
 class Calculator {
-  constructor(operation, num1, num2, result, ...remaining) {
+  constructor(
+    operation,
+    num1,
+    num2,
+    result,
+    digitSelector,
+    operationSelector,
+    ...remaining
+  ) {
     this.operation = operation;
     this.num1 = num1;
     this.num2 = num2;
     this.remaining = remaining;
     this.result = result;
+    this.digitSelector = digitSelector;
+    this.operationSelector = operationSelector;
   }
 
   get Result() {
@@ -18,6 +28,10 @@ class Calculator {
       return this.calculate();
     }
   }
+
+  static findDigitSelector = (num) => {
+    return (this.digitSelector = `\[value="${num}"]`);
+  };
 
   calculate() {
     switch (this.operation) {
